@@ -57,8 +57,8 @@
     <!-- 메인 콘텐츠 -->
     <main class="container mx-auto mt-6 px-4 max-w-2xl pb-20">
         <div class="mb-8 p-6 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl text-white shadow-xl">
-            <h2 class="text-xl font-bold mb-1 text-white">IASA 익명 게시판 (LIVE)</h2>
-            <p class="text-sm opacity-80 text-white">이제 모든 학우와 실시간으로 연결됩니다.</p>
+            <h2 class="text-xl font-bold mb-1 text-white">IASA 익명 게시판</h2>
+            <p class="text-sm opacity-80 text-white">학생의 목소리로 변화를 만듭니다.</p>
         </div>
         <div id="postList" class="space-y-4"></div>
     </main>
@@ -118,8 +118,8 @@
             init() {
                 if (!this.userId) {
                     this.userId = 'user_' + Date.now();
-                    const adjs = ["슬기로운", "창의적인", "열정적인", "차분한", "용감한"];
-                    const nouns = ["원소", "입자", "아이작", "양자", "프랙탈", "뉴턴"];
+                    const adjs = ["슬기로운", "창의적인", "열정적인", "차분한", "용감한", "똑똑한", "잘생긴", "멋있는"];
+                    const nouns = ["원소", "입자", "아이작", "양자", "프랙탈", "뉴턴", "가우스", "전압계", "오비탈"];
                     this.userNick = adjs[Math.floor(Math.random() * adjs.length)] + " " + nouns[Math.floor(Math.random() * nouns.length)];
                     localStorage.setItem('iasa_user_id', this.userId);
                     localStorage.setItem('iasa_user_nick', this.userNick);

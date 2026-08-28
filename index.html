@@ -20,16 +20,16 @@
 </head>
 <body>
 
-    <!-- [1] 로그인/회원가입 섹션 (실명 및 iasa.icehs.kr 인증) -->
+    <!-- [1] 로그인/회원가입 섹션 -->
     <div id="authContainer" class="fixed inset-0 z-[200] bg-indigo-950 flex items-center justify-center p-4">
         <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl w-full max-w-md">
             <!-- 로그인 박스 -->
             <div id="loginBox">
-                <h2 class="text-2xl font-bold text-indigo-600 mb-2 text-center tracking-tighter">IASA 익명 게시판</h2>
+                <h2 class="text-2xl font-bold text-indigo-600 mb-2 text-center tracking-tighter italic">IASA SQUARE</h2>
                 <p class="text-xs text-gray-400 text-center mb-8">학교 이메일(@iasa.icehs.kr)로 로그인하세요.</p>
                 <input id="loginEmail" type="email" placeholder="학교 이메일 (@iasa.icehs.kr)" class="w-full p-4 bg-gray-50 rounded-2xl mb-3 outline-none focus:ring-2 focus:ring-indigo-500 border-none">
                 <input id="loginPw" type="password" placeholder="비밀번호" class="w-full p-4 bg-gray-50 rounded-2xl mb-6 outline-none focus:ring-2 focus:ring-indigo-500 border-none">
-                <button onclick="auth.login()" class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition mb-4 shadow-lg">로그인</button>
+                <button onclick="auth.login()" class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition mb-4 shadow-lg text-lg">로그인</button>
                 <p class="text-xs text-center text-gray-400">처음 오셨나요? <button onclick="auth.toggle()" class="text-indigo-600 font-bold underline ml-1">회원가입</button></p>
             </div>
             <!-- 회원가입 박스 -->
@@ -39,13 +39,13 @@
                 <input id="signName" type="text" placeholder="본명 (실명)" class="w-full p-4 bg-gray-50 rounded-2xl mb-2 outline-none border-none">
                 <input id="signEmail" type="email" placeholder="학교 이메일 (@iasa.icehs.kr)" class="w-full p-4 bg-gray-50 rounded-2xl mb-2 outline-none border-none">
                 <div class="grid grid-cols-2 gap-2 mb-2">
-                    <input id="signId" type="text" placeholder="학번 (예: 10101)" class="p-4 bg-gray-50 rounded-2xl outline-none border-none">
+                    <input id="signId" type="text" placeholder="학번 (예: 24001)" class="p-4 bg-gray-50 rounded-2xl outline-none border-none">
                     <select id="signGrade" class="p-4 bg-gray-50 rounded-2xl outline-none font-bold text-gray-500 border-none">
                         <option value="9기">9기</option><option value="10기">10기</option><option value="11기">11기</option>
                     </select>
                 </div>
                 <input id="signPw" type="password" placeholder="비밀번호 설정" class="w-full p-4 bg-gray-50 rounded-2xl mb-6 outline-none border-none">
-                <button onclick="auth.signup()" class="w-full py-4 bg-green-600 text-white rounded-2xl font-bold hover:bg-green-700 transition shadow-lg">가입 및 본인인증</button>
+                <button onclick="auth.signup()" class="w-full py-4 bg-green-600 text-white rounded-2xl font-bold hover:bg-green-700 transition shadow-lg text-lg">가입 및 본인인증</button>
                 <button onclick="auth.toggle()" class="w-full mt-4 text-xs text-gray-400 font-bold underline text-center">로그인으로 돌아가기</button>
             </div>
         </div>
@@ -87,17 +87,16 @@
         </div>
     </div>
 
-    <!-- [4] 메인 콘텐츠 -->
-    <main class="container mx-auto mt-6 px-4 max-w-2xl pb-24">
+    <main class="container mx-auto mt-6 px-4 max-w-2xl pb-24 text-center">
         <div id="postList" class="space-y-4"></div>
     </main>
 
-    <!-- [5] 글쓰기 모달 -->
+    <!-- [4] 글쓰기 모달 -->
     <div id="writeModal" class="fixed inset-0 bg-black/60 hidden flex items-center justify-center p-4 z-[100] backdrop-blur-sm">
         <div class="bg-white rounded-[2.5rem] w-full max-w-lg p-8 shadow-2xl overflow-y-auto max-h-[90vh]">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-xl font-bold text-gray-800">새로운 글 작성</h2>
-                <button onclick="app.closeModal('write')" class="text-gray-400"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div class="flex justify-between items-center mb-6 text-indigo-600">
+                <h2 class="text-xl font-bold">새로운 글 작성</h2>
+                <button onclick="app.closeModal('write')"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
             <div class="space-y-4">
                 <div class="grid grid-cols-3 gap-2 text-xs font-bold">
@@ -114,15 +113,7 @@
                 <input id="pTitle" type="text" placeholder="제목" class="w-full p-4 bg-gray-50 rounded-2xl outline-none border-none focus:ring-2 focus:ring-indigo-400">
                 <textarea id="pContent" placeholder="여기에 내용을 입력하세요..." rows="6" class="w-full p-4 bg-gray-50 rounded-2xl outline-none border-none focus:ring-2 focus:ring-indigo-400"></textarea>
                 
-                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-2xl border-none">
-                    <label class="cursor-pointer bg-white px-3 py-2 rounded-xl text-[10px] font-bold shadow-sm">
-                        <i class="fa-solid fa-paperclip mr-1 text-indigo-500"></i> 파일/이미지 첨부
-                        <input type="file" id="pFile" class="hidden" accept=".jpg,.png,.pdf">
-                    </label>
-                    <span id="fileName" class="text-[10px] text-gray-400 truncate max-w-[150px]"></span>
-                </div>
-
-                <div class="p-4 bg-indigo-50 rounded-2xl">
+                <div class="p-4 bg-indigo-50 rounded-2xl text-left">
                     <label class="block text-[10px] font-bold text-indigo-400 mb-1">삭제 비밀번호 (4자리)</label>
                     <input id="pPassword" type="password" maxlength="4" placeholder="숫자 입력" class="w-full bg-transparent outline-none text-sm font-bold border-none p-0 text-indigo-900">
                 </div>
@@ -133,7 +124,7 @@
     </div>
 
     <script>
-        // --- 1. Firebase 설정 ---
+        // --- 1. Firebase 설정 (본인의 값 유지) ---
         const firebaseConfig = {
             apiKey: "AIzaSyAEZfvqAOOI0n9zCScsXQvuYEC2n3Xvw7k",
             authDomain: "iasa-website-2a168.firebaseapp.com",
@@ -145,12 +136,10 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // 닉네임 조합 및 금지어
         const adjs = ["빛나는", "차분한", "치밀한", "용감한", "슬기로운", "창의적인", "열정적인", "날카로운", "빠른", "고요한", "냉철한"];
         const nouns = ["뉴턴", "아인슈타인", "퀴리", "테슬라", "가우스", "입자", "양자", "원소", "프랙탈", "은하", "피펫", "전자"];
-        const banned = ["욕설", "나쁜말", "선정단어"];
 
-        // --- 2. 인증 로직 (iasa.icehs.kr 전용) ---
+        // --- 2. 인증 로직 (수정됨) ---
         const auth = {
             toggle() {
                 document.getElementById('loginBox').classList.toggle('hidden');
@@ -166,26 +155,47 @@
                 if(!name || !email || !sid || !pw) return alert("모든 항목을 입력하세요.");
                 if(!email.endsWith("@iasa.icehs.kr")) return alert("학교 이메일(@iasa.icehs.kr)만 가입 가능합니다.");
 
-                const check = await db.collection("users").doc(email).get();
-                if(check.exists) return alert("이미 가입된 계정입니다.");
+                try {
+                    const check = await db.collection("users").doc(email).get();
+                    if(check.exists) return alert("이미 가입된 계정입니다.");
 
-                await db.collection("users").doc(email).set({ realName: name, studentId: sid, grade, pw });
-                alert("회원가입 완료! 로그인 해주세요.");
-                this.toggle();
+                    await db.collection("users").doc(email).set({ realName: name, studentId: sid, grade, pw });
+                    alert("회원가입 완료! 이제 로그인 해주세요.");
+                    
+                    // 가입 정보 초기화 및 로그인 창으로 전환
+                    document.getElementById('signName').value = "";
+                    document.getElementById('signEmail').value = "";
+                    document.getElementById('signId').value = "";
+                    document.getElementById('signPw').value = "";
+                    this.toggle(); 
+                } catch(e) {
+                    alert("오류가 발생했습니다. 잠시 후 다시 시도하세요.");
+                }
             },
             async login() {
                 const email = document.getElementById('loginEmail').value.trim();
                 const pw = document.getElementById('loginPw').value.trim();
-                const userDoc = await db.collection("users").doc(email).get();
 
-                if(userDoc.exists && userDoc.data().pw === pw) {
-                    const data = userDoc.data();
-                    const nick = adjs[Math.floor(Math.random()*adjs.length)] + " " + nouns[Math.floor(Math.random()*nouns.length)];
-                    const userData = { email, name: data.realName, grade: data.grade, nick };
-                    sessionStorage.setItem('iasa_user', JSON.stringify(userData));
-                    location.reload();
-                } else {
-                    alert("이메일 또는 비밀번호가 틀립니다.");
+                if(!email || !pw) return alert("이메일과 비밀번호를 입력하세요.");
+
+                try {
+                    const userDoc = await db.collection("users").doc(email).get();
+
+                    if(!userDoc.exists) {
+                        return alert("회원가입부터 해야합니다."); // 요청하신 멘트 추가
+                    }
+
+                    if(userDoc.data().pw === pw) {
+                        const data = userDoc.data();
+                        const nick = adjs[Math.floor(Math.random()*adjs.length)] + " " + nouns[Math.floor(Math.random()*nouns.length)];
+                        const userData = { email, name: data.realName, grade: data.grade, nick };
+                        sessionStorage.setItem('iasa_user', JSON.stringify(userData));
+                        location.reload(); // 메인 페이지로 진입
+                    } else {
+                        alert("비밀번호가 틀립니다.");
+                    }
+                } catch(e) {
+                    alert("로그인 중 오류가 발생했습니다.");
                 }
             }
         };
@@ -203,9 +213,6 @@
                     document.getElementById('userProfile').innerText = `${this.user.grade} | ${this.user.nick}`;
                     this.load();
                 }
-                document.getElementById('pFile').onchange = (e) => {
-                    document.getElementById('fileName').innerText = e.target.files[0]?.name || "";
-                };
             },
 
             load() {
@@ -237,15 +244,14 @@
                 const visibility = document.getElementById('pVisibility').value;
                 const pw = document.getElementById('pPassword').value;
 
-                if(!title || !content || pw.length < 4) return alert("빈칸을 채우고 비밀번호 4자리를 설정하세요.");
-                if(banned.some(w => title.includes(w) || content.includes(w))) return alert("부적절한 내용이 감지되었습니다.");
+                if(!title || !content || pw.length < 4) return alert("내용을 채우고 비밀번호 4자리를 설정하세요.");
 
                 const btn = document.getElementById('submitBtn');
                 btn.disabled = true; btn.innerText = "게시 중...";
 
                 await db.collection("posts").add({
                     title, content, category, grade, visibility, pw,
-                    authorEmail: this.user.email, // 관리자 확인용 추적 데이터
+                    authorEmail: this.user.email,
                     authorNick: this.user.nick,
                     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                     date: new Date().toLocaleDateString(),
@@ -299,14 +305,14 @@
 
                 filtered.forEach(post => {
                     const card = document.createElement('div');
-                    card.className = `post-card p-6 rounded-[2rem] shadow-sm border mb-4 ${post.visibility === 'private' ? 'bg-indigo-50 border-indigo-100' : 'bg-white border-gray-100'}`;
+                    card.className = `post-card p-6 rounded-[2rem] shadow-sm border mb-4 text-left ${post.visibility === 'private' ? 'bg-indigo-50 border-indigo-100' : 'bg-white border-gray-100'}`;
                     card.innerHTML = `
                         <div class="flex justify-between items-start mb-4">
                             <div class="flex gap-2 text-[10px] font-bold">
                                 <span class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full">${post.grade}</span>
                                 <span class="px-3 py-1 bg-gray-100 text-gray-500 rounded-full">${post.category}</span>
                             </div>
-                            <div class="text-[10px] text-gray-400 font-medium">
+                            <div class="text-[10px] text-gray-400">
                                 <span>${post.date}</span>
                                 ${post.authorEmail === this.user.email ? `<button onclick="app.deletePost('${post.id}', '${post.pw}')" class="text-red-400 ml-2">삭제</button>` : ''}
                             </div>
